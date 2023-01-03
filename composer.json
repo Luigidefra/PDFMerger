@@ -1,6 +1,7 @@
 {
     "name": "luigidefra/laravel-pdf-merger",
     "description": "PDFMerger for PHP (PHP 5 and up to PHP 7.1 Compatible)",
+    "version": "@dev",
     "authors": [
     	{
     		"name":"Jarrod Nettles",
@@ -18,7 +19,7 @@
     "require":{
     	"php": ">=5.2.0"
     },
-    "minimum-stability":"dev-master",
+    "minimum-stability":"@dev",
     "autoload":{
     	"psr-0":{
     		"PDFMerger": "PDFMerger.php"
