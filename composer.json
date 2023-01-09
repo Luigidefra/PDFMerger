@@ -22,8 +22,8 @@
 
     "minimum-stability":"stable",
     "autoload":{
-    	"psr-0":{
-    		"PDFMerger": "PDFMerger.php"
-    	}
+		"psr-4": {
+			"Luigidefra\\PDFMerger\\": "."
+		}
     }
 }
