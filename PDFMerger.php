@@ -32,7 +32,7 @@
  *  - essentially, it cannot import dynamic content such as form fields, links
  * or page annotations (anything not a part of the page content stream).
  */
-namespace PDFMerger;
+namespace Luigidefra\PDFMerger;
 
 class PDFMerger
 {
@@ -57,7 +57,7 @@ class PDFMerger
 	 */
 	public function addPDF($filepath, $pages = 'all')
 	{
-		if(file_exists($filepath))
+		if(is_resource($filepath) || file_exists($filepath))
 		{
 			if(strtolower($pages) != 'all')
 			{
@@ -91,10 +91,17 @@ class PDFMerger
 		//merger operations
 		foreach($this->_files as $file)
 		{
-			$filename  = $file[0];
-			$filepages = $file[1];
 
-			$count = $fpdi->setSourceFile($filename);
+            if(is_resource($file[0])){
+                $filename = md5(stream_get_contents($file[0]));
+                rewind($file[0]);
+            }else {
+                $filename = md5($file[0]);
+            }
+
+            $filepages = $file[1];
+
+            $count = $fpdi->setSourceFile($filename, $file[0]);
 
 			//add the pages
 			if($filepages == 'all')

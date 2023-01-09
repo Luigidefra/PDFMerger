@@ -81,11 +81,11 @@ class TCPDI extends FPDF_TPL {
      * @param string $filename a valid filename
      * @return int number of available pages
      */
-    function setSourceFile($filename) {
+    function setSourceFile($filename, $content) {
         $this->current_filename = $filename;
         
         if (!isset($this->parsers[$filename]))
-            $this->parsers[$filename] = $this->_getPdfParser($filename);
+            $this->parsers[$filename] = $this->_getPdfParser($filename, $content);
         $this->current_parser =& $this->parsers[$filename];
         $this->setPDFVersion(max($this->getPDFVersion(), $this->current_parser->getPDFVersion()));
         
@@ -116,8 +116,13 @@ class TCPDI extends FPDF_TPL {
      * @param string $filename
      * @return fpdi_pdf_parser
      */
-    function _getPdfParser($filename) {
-        $data = file_get_contents($filename);
+    function _getPdfParser(string $filename, $content) {
+        if(is_resource($content)){
+            $data = stream_get_contents($content);
+        }else{
+            $data = file_get_contents($content);
+        }
+
     	return new tcpdi_parser($data, $filename, PDF_PARSER_ERROR_HANDLER_EXCEPTION);
     }
     
