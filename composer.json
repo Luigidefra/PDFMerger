@@ -19,7 +19,7 @@
     "require":{
     	"php": ">=5.2.0"
     },
-    "minimum-stability":"0.2",
+    "minimum-stability":"stable",
     "autoload":{
     	"psr-0":{
     		"PDFMerger": "PDFMerger.php"
