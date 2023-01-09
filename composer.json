@@ -1,7 +1,7 @@
 {
     "name": "luigidefra/pdfmerger",
     "description": "FORK PDFMerger for PHP (PHP 5 and up to PHP 7.1 Compatible)",
-    "version": "0.2",
+    "version": "0.2.1",
     "authors": [
     	{
     		"name":"Jarrod Nettles",
